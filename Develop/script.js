@@ -2,8 +2,8 @@
 // Assignment code here
 var numbers = "0123456789"  
 var specialChar = "!%&*+-./<>?~"
-var alphaLower = "abcdefghijklmnopqrstuvwxyz";
-var alphaUpper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+var lowerCases = "abcdefghijklmnopqrstuvwxyz";
+var upperCases = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
 
 var promptLength = "";
@@ -11,6 +11,7 @@ var confirmSpecial;
 var confirmNumeric;
 var confirmLowerCase;
 var confirmUpperCase;
+
 
 
 function generatePassword() {
@@ -23,43 +24,45 @@ function generatePassword() {
   }
 
   var confirmSpecial = window.confirm("Would you like special characters in your password?");
-  var confirmNumeric = window.confirm("Would you like special numerics in your password?");
+  var confirmNumeric = window.confirm("Would you like numbers in your password?");
   var confirmUpperCase = window.confirm("Would you like upper-case characters in your password?");
   var confirmLowerCase = window.confirm("Would you like lower-case characters in your password?");
   
   while (!confirmSpecial && !confirmNumeric && !confirmUpperCase && !confirmLowerCase) {
     window.alert("Password must include at least one character type.");
     var confirmSpecial = window.confirm("Would you like special characters in your password?");
-    var confirmNumeric = window.confirm("Would you like special numerics in your password?");
+    var confirmNumeric = window.confirm("Would you like numbers in your password?");
     var confirmUpperCase = window.confirm("Would you like upper-case characters in your password?");
     var confirmLowerCase = window.confirm("Would you like lower-case characters in your password?");
 
   }
 
-  var password = "";
+  var validChars = "";
 
     if(confirmSpecial) {
-      password = password + specialChar.charAt(Math.floor(Math.random() * Math.floor(specialChar.length - 1)));
-      
+      validChars = validChars + specialChar;
     }
     if(confirmNumeric) {
-      password = password + numbers.charAt(Math.floor(Math.random() * Math.floor(numbers.length - 1)));
-      
+      validChars = validChars + numbers;
     }
     if(confirmUpperCase) {
-      password = password + alphaUpper.charAt(Math.floor(Math.random() * Math.floor(alphaUpper.length - 1)));
-      
+      validChars = validChars + upperCases;
     }
     if(confirmLowerCase) {
-      password = password + alphaLower.charAt(Math.floor(Math.random() * Math.floor(alphaLower.length - 1)));
-      
+      validChars = validChars + lowerCases;
     }
-    console.log(password);
+    ;
   
+    var password = "";
+    var length = parseInt(promptLength);
 
-
+    for( let i = 0; i < length; i++) {
+      var randomPoint = Math.floor(Math.random() * validChars.length);
+      password = password + validChars[randomPoint];  
+    }
+    return password;
+    console.log(password);
 }
-
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
 
