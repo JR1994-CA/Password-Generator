@@ -61,7 +61,6 @@ function generatePassword() {
       password = password + validChars[randomPoint];  
     }
     return password;
-    console.log(password);
 }
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
