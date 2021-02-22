@@ -1,9 +1,9 @@
 
 // Assignment code here
-var number = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
-var specialChar = ["!", "%", "&", ",", "*", "+", "-", ".", "/", "<", ">", "?","~"];
-var alphaLower = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
-var alphaUpper = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+var numbers = "0123456789"  
+var specialChar = "!%&*+-./<>?~"
+var alphaLower = "abcdefghijklmnopqrstuvwxyz";
+var alphaUpper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
 
 var promptLength = "";
@@ -15,9 +15,9 @@ var confirmUpperCase;
 
 function generatePassword() {
 
-  var promptLength = window.prompt('How long would you like your new password to be?');
+  var promptLength = window.prompt('How long would you like your new password to be? Please enter a number between 8 ');
 
-  while (promptLength < 7 && promptLength > 128) {
+  while (promptLength < 7 || promptLength > 128) {
     window.alert("Password must be between 8 and 128 characters. Try again.");
     var promptLength = window.prompt('How long would you like your new password to be?');
   }
@@ -36,6 +36,27 @@ function generatePassword() {
 
   }
 
+  var password = "";
+
+    if(confirmSpecial) {
+      password = password + specialChar.charAt(Math.floor(Math.random() * Math.floor(specialChar.length - 1)));
+      
+    }
+    if(confirmNumeric) {
+      password = password + numbers.charAt(Math.floor(Math.random() * Math.floor(numbers.length - 1)));
+      
+    }
+    if(confirmUpperCase) {
+      password = password + alphaUpper.charAt(Math.floor(Math.random() * Math.floor(alphaUpper.length - 1)));
+      
+    }
+    if(confirmLowerCase) {
+      password = password + alphaLower.charAt(Math.floor(Math.random() * Math.floor(alphaLower.length - 1)));
+      
+    }
+    console.log(password);
+  
+
 
 }
 
@@ -53,4 +74,3 @@ function writePassword() {
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
-© 2021 GitHub, Inc.
