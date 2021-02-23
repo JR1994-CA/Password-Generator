@@ -21,5 +21,3 @@ After asking for a 10 character password
 ## Deployed Application URL
 
 https://jr1994-ca.github.io/Password-Generator/
-
-https://github.com/JR1994-CA/Password-Generator
