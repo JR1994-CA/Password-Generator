@@ -16,9 +16,9 @@ var confirmUpperCase;
 
 function generatePassword() {
 
-  var promptLength = window.prompt('How long would you like your new password to be? Please enter a number between 8 ');
+  var promptLength = window.prompt('How long would you like your new password to be? Please enter a number between 8 and 128.');
 
-  while (promptLength < 7 || promptLength > 128) {
+  while (promptLength <= 7 || promptLength > 128) {
     window.alert("Password must be between 8 and 128 characters. Try again.");
     var promptLength = window.prompt('How long would you like your new password to be?');
   }
@@ -38,18 +38,27 @@ function generatePassword() {
   }
 
   var validChars = "";
+  var validCharConfirm;
 
     if(confirmSpecial) {
       validChars = validChars + specialChar;
+      validCharConfirm = validChars.includes(specialChar);
+      console.log(validCharConfirm);
     }
     if(confirmNumeric) {
       validChars = validChars + numbers;
+      validCharConfirm = validChars.includes(numbers);
+      console.log(validCharConfirm);
     }
     if(confirmUpperCase) {
       validChars = validChars + upperCases;
+      validCharConfirm = validChars.includes(upperCases);
+      console.log(validCharConfirm);
     }
     if(confirmLowerCase) {
       validChars = validChars + lowerCases;
+      validCharConfirm = validChars.includes(lowerCases);
+      console.log(validCharConfirm);
     }
     ;
   
@@ -58,8 +67,10 @@ function generatePassword() {
 
     for( let i = 0; i < length; i++) {
       var randomPoint = Math.floor(Math.random() * validChars.length);
-      password = password + validChars[randomPoint];  
+      password = password + validChars[randomPoint];
+      console.log(password);  
     }
+    
     return password;
 }
 // Get references to the #generate element
